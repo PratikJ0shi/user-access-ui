@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #3b82f6;
+      --bg: #f5f7fa;
+      --light: #fff;
+      --muted: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: #333;
+    }
+
+
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .form-section,
+    .qa-section {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      overflow: auto;
+      max-height: 90vh;
+    }
+
+    h2, h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .gender-group {
+      margin-top: 0.5rem;
+    }
+
+    .gender-group label {
+      margin-right: 1.5rem;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 2rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--accent);
+    }
+
+    .doc-section {
+      margin-bottom: 2rem;
+    }
+
+    .doc-section pre,
+    .doc-section table {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        max-height: auto;
+      }
+      body, html {
+  overflow-x: hidden;
+}
+
+      h1{font-size:20px;}
+
+      .form-section,
+      .qa-section {
+        width: 100%;
+        box-sizing: border-box;
+        max-height: none;
+        padding: 1.5rem;
+      }
+      #testcase{font-size:8px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Registration Form</h1>
+</header>
+
+<div class="container">
+
+  <!-- Registration Form -->
+  <section class="form-section" aria-label="Registration Form Section">
+    <h2>📝 New User Registration</h2>
+    <form id="registrationForm" novalidate>
+      <label for="regUsername">Username</label>
+      <input type="text" id="regUsername" name="username" required tabindex="1" autocomplete="username" />
+
+      <label for="regEmail">Email</label>
+      <input type="email" id="regEmail" name="email" required tabindex="2" autocomplete="email" />
+
+      <label for="regPassword">Password</label>
+      <input type="password" id="regPassword" name="password" required minlength="6" tabindex="3" autocomplete="new-password" />
+
+      <label for="regConfirmPassword">Confirm Password</label>
+      <input type="password" id="regConfirmPassword" name="confirmPassword" required tabindex="4" autocomplete="new-password" />
+
+      <label>Gender</label>
+      <div class="gender-group" role="radiogroup" aria-labelledby="gender-label">
+        <label><input type="radio" name="gender" value="Male" required tabindex="5" /> Male</label>
+        <label><input type="radio" name="gender" value="Female" tabindex="6" /> Female</label>
+        <label><input type="radio" name="gender" value="Other" tabindex="7" /> Other</label>
+      </div>
+
+      <label for="regContact">Contact Number</label>
+      <input type="tel" id="regContact" name="contact" pattern="\d{10}" placeholder="e.g., 9876543210" required tabindex="8" autocomplete="tel" />
+
+      <button type="submit" tabindex="9">Register</button>
+    </form>
+    <p>
+  Already have an account? <a href="login.html">Login here</a>
+</p>
+
+  </section>
+
+  <!-- QA Artifacts -->
+  <section class="qa-section" aria-label="QA Documentation Section">
+    <h2>📋 QA Artifacts</h2>
+
+    <!-- Test Plan -->
+    <div class="doc-section" id="testPlan">
+      <h3>✅ Test Plan</h3>
+      <pre>
+Objective:
+- Validate registration form functionality
+
+Scope:
+- Field validation (required, format, length)
+- Password confirmation
+- UI feedback and alerts
+
+Tools:
+- Manual testing, Browser Dev Tools
+
+Environment:
+- Local HTML page
+      </pre>
+    </div>
+
+    <!-- Test Scenarios -->
+    <div class="doc-section" id="testScenarios">
+      <h3>🧾 Test Scenarios</h3>
+      <pre>
+1. Submit with all valid inputs
+2. Submit with empty required fields
+3. Mismatched password and confirm password
+4. Invalid email format
+5. Contact number less/more than 10 digits or non-digit characters
+6. No gender selected
+7. Password minimum length enforcement
+      </pre>
+    </div>
+
+    <!-- Test Cases -->
+    <div class="doc-section" id="testCases">
+      <h3>🔍 Test Cases</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Steps</th>
+            <th>Expected Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TC101</td>
+            <td>Valid Registration</td>
+            <td>Fill all fields correctly and submit</td>
+            <td>Success alert shown</td>
+          </tr>
+          <tr>
+            <td>TC102</td>
+            <td>Empty Fields</td>
+            <td>Submit without entering data</td>
+            <td>Alerts for required fields</td>
+          </tr>
+          <tr>
+            <td>TC103</td>
+            <td>Password Mismatch</td>
+            <td>Enter different password & confirm password</td>
+            <td>Alert about mismatched passwords</td>
+          </tr>
+          <tr>
+            <td>TC104</td>
+            <td>Invalid Email Format</td>
+            <td>Enter invalid email and submit</td>
+            <td>Alert about email format</td>
+          </tr>
+          <tr>
+            <td>TC105</td>
+            <td>Invalid Contact Number</td>
+            <td>Enter contact with non-digit or wrong length</td>
+            <td>Alert about contact number format</td>
+          </tr>
+          <tr>
+            <td>TC106</td>
+            <td>Gender Not Selected</td>
+            <td>Submit without selecting gender</td>
+            <td>Alert requesting gender selection</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>const form = document.getElementById('registrationForm');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const username = form.username.value.trim();
+  const email = form.email.value.trim();
+  const password = form.password.value;
+  const confirmPassword = form.confirmPassword.value;
+  const genderEls = form.gender;
+  let gender = null;
+  for (let i = 0; i < genderEls.length; i++) {
+    if (genderEls[i].checked) {
+      gender = genderEls[i].value;
+      break;
+    }
+  }
+  const contact = form.contact.value.trim();
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const contactPattern = /^\d{10}$/;
+
+  if (!username) {
+    alert('Username is required.');
+    form.regUsername.focus();
+    return;
+  }
+
+  if (!email || !emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    form.regEmail.focus();
+    return;
+  }
+
+  if (!password || password.length < 6) {
+    alert('Password must be at least 6 characters.');
+    form.regPassword.focus();
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match.');
+    form.regConfirmPassword.focus();
+    return;
+  }
+
+  if (!gender) {
+    alert('Please select your gender.');
+    // focus not reliable on radio group, so just return
+    return;
+  }
+
+  if (!contact || !contactPattern.test(contact)) {
+    alert('Contact number must be exactly 10 digits.');
+    form.regContact.focus();
+    return;
+  }
+
+  alert(`Registration successful for user: ${username}`);
+  form.reset();
+});
+</script>
+</body>
+</html>

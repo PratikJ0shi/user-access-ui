@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Testing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #3b82f6;
+      --bg: #f5f7fa;
+      --light: #ffffff;
+      --muted: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: #333;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 100%;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+/* Fix overflow in QA section on small screens */
+.qa-section {
+  overflow-x: auto;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.doc-section pre {
+  white-space: pre-wrap; /* Allow pre blocks to wrap */
+  word-break: break-word;
+}
+
+    .login-section,
+    .qa-section {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h2, h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent);
+    }
+
+    .doc-section {
+      margin-bottom: 2rem;
+    }
+
+    .doc-section h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-section pre,
+    .doc-section table {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      .login-section,
+      .qa-section {
+        padding: 1.2rem;
+      }
+
+      .doc-section pre {
+        font-size: 0.9rem;
+      }
+
+      table, th, td {
+        font-size: 0.85rem;
+      }
+
+      .doc-section table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    /* Forgot Password Link Styling */
+.forgot-password {
+  display: block;
+  margin-top: 8px;
+  margin-right:1px;
+  text-align: right;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Button Hover Effect */
+button:hover {
+  background-color: #0056b3; /* Darker blue */
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  form {
+    width: 90%; /* Make form width smaller on mobile */
+    padding: 15px;
+  }
+
+  input, button, .forgot-password {
+    font-size: 1rem; /* Larger tap targets */
+  }
+
+  .forgot-password {
+    text-align: right;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Login</h1>
+</header>
+
+<div class="container">
+  <!-- Login Form -->
+  <div class="login-section">
+    <h2>🔐 Login Form</h2>
+    <form id="loginForm">
+      <label for="username">Username/Email</label>
+      <input type="text" id="username" name="username" required tabindex="1" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required tabindex="2" />
+
+      <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+      <button type="submit" tabindex="3">Login</button>
+      
+    </form>
+    <p>
+  Don't have an account? <a href="register.html">Register here</a><br>
+</p>
+
+  </div>
+
+  <!-- QA Best Practices -->
+  <div class="qa-section">
+    <h2>📋 QA Artifacts</h2>
+
+    <!-- Test Plan -->
+    <div class="doc-section">
+      <h3>✅ Test Plan</h3>
+      <pre>
+Objective:
+- Validate login form functionality
+
+Scope:
+- Field validation
+- Credential verification
+- UI feedback
+
+Tools:
+- Manual testing, Browser Dev Tools
+
+Environment:
+- Local HTML page
+
+Test Data:
+- Username: testuser@example.com
+- Password: Pass@123
+      </pre>
+    </div>
+
+    <!-- Test Scenarios -->
+    <div class="doc-section">
+      <h3>🧾 Test Scenarios</h3>
+      <pre>
+1. Login with valid credentials
+2. Submit with empty fields
+3. Incorrect password with valid username
+4. Invalid username
+5. Password field is masked
+6. Alerts displayed on login attempts
+7.Verify that the "Forgot Password?" link is displayed and clickable
+      </pre>
+    </div>
+
+    <!-- Test Cases -->
+    <div class="doc-section">
+      <h3>🔍 Test Cases</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Steps</th>
+            <th>Expected Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TC001</td>
+            <td>Valid Login</td>
+            <td>Enter valid credentials and click Login</td>
+            <td>Success alert shown</td>
+          </tr>
+          <tr>
+            <td>TC002</td>
+            <td>Empty Fields</td>
+            <td>Submit form without input</td>
+            <td>Alert: "Please fill all fields."</td>
+          </tr>
+          <tr>
+            <td>TC003</td>
+            <td>Wrong Password</td>
+            <td>Correct username, wrong password</td>
+            <td>Alert: "Invalid credentials."</td>
+          </tr>
+          <tr>
+            <td>TC004</td>
+            <td>Invalid Username</td>
+            <td>Unknown username and any password</td>
+            <td>Alert: "Invalid credentials."</td>
+          </tr>
+          <tr>
+            <td>TC005</td>
+            <td>Password Masking</td>
+            <td>Check input type of password field</td>
+            <td>Input type is "password"</td>
+          </tr>
+          <tr>
+            <td>TC006</td>
+            <td>Form Alert</td>
+            <td>Submit form with various data</td>
+            <td>Relevant alert shown</td>
+          </tr>
+          <tr>
+            <td>TC007</td>
+            <td>Forgot Password Link</td>
+            <td>Click on 'Forgot Password?' link</td>
+            <td>User is redirected to password recovery page</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Test Data -->
+    <div class="doc-section">
+      <h3>🔐 Test Data</h3>
+      <pre>
+Valid:
+  Username: testuser@example.com
+  Password: Pass@123
+
+Invalid:
+  Username: invalid@example.com
+  Password: wrongpass
+      </pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  const testCredentials = {
+    username: "testuser@example.com",
+    password: "Pass@123"
+  };
+
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!username || !password) {
+      alert("❗ Please fill all fields.");
+    } else if (
+      username === testCredentials.username &&
+      password === testCredentials.password
+    ) {
+      alert("✅ Login successful. Welcome, " + username + "!");
+    } else {
+      alert("❌ Invalid credentials. Please try again.");
+    }
+  });
+</script>
+
+</body>
+</html>
