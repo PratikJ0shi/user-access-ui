@@ -6,9 +6,9 @@ A responsive front-end authentication interface built with HTML, CSS, and JavaSc
 
 🌐 **Live Demo**
 
-- [🔑 Login Page](https://pratiks-desk.site/practice-hub/user-access-ui/login.html)  
-- [📝 Register Page](https://pratiks-desk.site/practice-hub/user-access-ui/register.html)  
-- [🔁 Forgot Password Page](https://pratiks-desk.site/practice-hub/user-access-ui/forgot-password.html)
+- [🔑 Login Page](https://pratiks-desk.site/user-access-ui/login.html)  
+- [📝 Register Page](https://pratiks-desk.site/user-access-ui/register.html)  
+- [🔁 Forgot Password Page](https://pratiks-desk.site/user-access-ui/forgot-password.html)
 
 ---
 
